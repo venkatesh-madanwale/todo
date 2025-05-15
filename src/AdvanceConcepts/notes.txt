@@ -1,10 +1,15 @@
 The event loop is a crucial mechanism that allows JavaScript to handle asynchronous operations efficiently. It enables non-blocking execution, which is essential for maintaining a responsive user interface and performing tasks like network requests without freezing the application. Here's how it works:
-Call Stack:
+
+##Call Stack:
 JavaScript executes code in a call stack, which follows the Last In, First Out (LIFO) principle. When a function is called, it's added to the top of the stack, and when it completes, it's removed. 
-Event Queue:
+
+##Event Queue:
 Asynchronous operations, such as setTimeout, fetch, or user events, are placed in the event queue once they are ready to be executed. Each operation in the queue contains a callback function.
-Event Loop:
+
+##Event Loop:
 The event loop continuously monitors both the call stack and the event queue. If the call stack is empty, the event loop takes the first task from the event queue and pushes it onto the call stack for execution. This process repeats indefinitely. 
-Microtask Queue:
+
+##Microtask Queue:
 Promises and MutationObserver callbacks are added to the microtask queue. Microtasks have higher priority than macrotasks (tasks from the event queue) and are executed after each macrotask.
+
 The event loop ensures that JavaScript can handle multiple tasks concurrently without blocking the main thread. It continuously checks if the call stack is empty and, if it is, it moves tasks from the event queue to the call stack for execution. This allows JavaScript to remain responsive and handle asynchronous operations effectively. 
