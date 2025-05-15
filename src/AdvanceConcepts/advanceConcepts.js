@@ -19,12 +19,31 @@ first()
 
 
 //For Ascynchronous Functions
+//setTimeout() is an asynchronous function
+//It is added to the callstack
+//The callback function is offloaded to the node API
+//The timer is set to 0ms
+//After 0ms the callback is placed to the callback queue
+//The callback is sent from the callback queue to the call stack for execution after all the synchronous functions are executed
 
-console.log("Number1")
-setTimeout(()=>{
+
+
+
+
+
+//Example of Asynchronous function
+//setTimeout() is an asynchronous function
+console.log("Number1")//This is a synchronous function
+setTimeout(()=>{//This is an asynchronous function
+    //This is a callback function
     console.log("Number2")
 },0)
-console.log("Number3")
+console.log("Number3")//This is a synchronous function
+//The output will be:
+//Number1
+//Number3
+//Number2
+
 
 //Steps:
 //Step 1. 
@@ -54,51 +73,67 @@ console.log("Number3")
 
 
 // Synchronous dependent
-
+// This is a synchronous function
 function syncDependent() {
-  console.log("Step 1: Start")
-  console.log("Step 2: Processing")
-  console.log("Step 3: End")
+  console.log("Step 1: Start")// This will be executed first
+  console.log("Step 2: Processing")// This will be executed second
+  console.log("Step 3: End")// This will be executed last
 }
 
 syncDependent()
 
 
 // Synchronous independent
-
+// This is a synchronous function
+// This function does not depend on any other function
+// It can be executed independently
+// This function does not depend on any other function
 function syncIndependent() {
-  console.log("Log user activity")
-  console.log("Fetch settings from local storage")
-  console.log("Display welcome message")
+  console.log("Log user activity")// This will be executed first
+  console.log("Fetch settings from local storage")// This will be executed second
+  console.log("Display welcome message")// This will be executed last
 }
 
 syncIndependent();
 
 
-// Synchronous with asynchronous independent
 
+
+// Synchronous with asynchronous independent
+// This is a synchronous function
+// This function does not depend on any other function
+// It can be executed independently
+// This function does not depend on any other function
+// This function is asynchronous
 function syncWithAsyncIndependent() {
-  console.log("Start process")
+  console.log("Start process")// This will be executed first
 
   setTimeout(() => {
-    console.log("Async Task Done (after 2s)");
+    console.log("Async Task Done (after 2s)");// This will be executed after 2 seconds
   }, 2000)
 
-  console.log("Continue with other work")
+  console.log("Continue with other work")// This will be executed second
+  console.log("End process")// This will be executed last
 }
 
 syncWithAsyncIndependent()
 
 
-// Synchronous with asynchronous dependent
 
+
+
+// Synchronous with asynchronous dependent
+// This is a synchronous function
+// This function depends on another function
+// This function is asynchronous
+// This function is dependent on another function
 
 function syncWithAsyncDependent() {
-  console.log("Fetching data...")
+  console.log("Fetching data...")// This will be executed first
 
-  setTimeout(() => {
-    console.log("Data received")
-    console.log("Processing data...")
+  setTimeout(() => {// This is an asynchronous function
+    console.log("Data received")// This will be executed after 2 seconds
+    console.log("Processing data...")// This will be executed after data is received
   }, 2000);
 }
 
