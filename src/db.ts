@@ -10,7 +10,7 @@ let db:any;
 
 export async function connectDB() {
     await client.connect()
-    db = client.db()//connects to the default DB in MongoDB
+    db = client.db('todos')//connects to the default DB in MongoDB
     console.log("MongoDB connected!")
 }
 

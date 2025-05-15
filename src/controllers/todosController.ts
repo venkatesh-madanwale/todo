@@ -73,7 +73,7 @@ export async function updateOne(req: IncomingMessage, res: ServerResponse, id: s
 
 
 //Remove todo based on id
-export async function removeOne(req: IncomingMessage, res: ServerResponse, id: string) {
+export async function deleteOne(req: IncomingMessage, res: ServerResponse, id: string) {
     try {
         const result = await getDB().collection('todos').deleteOne({ "_id": new (require('mongodb')).ObjectId(id) })
         if (!result) {
@@ -91,7 +91,7 @@ export async function removeOne(req: IncomingMessage, res: ServerResponse, id: s
 
 
 //Remove all
-export async function removeAll(req: IncomingMessage, res: ServerResponse) {
+export async function deleteAll(req: IncomingMessage, res: ServerResponse) {
     try {
         const todos = await getDB().collection('todos').deleteMany({})
         res.writeHead(200, { 'Content-Type': 'application/json' })
