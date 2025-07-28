@@ -69,11 +69,7 @@ export class TestAttempt {
 
   @Column({ type: 'int', default: 0 })
   attempt_count: number;
-
-  @ManyToOne(() => McqQuestion, { nullable: true })
-  @JoinColumn({ name: 'last_question_id' })
-  last_question: McqQuestion;
-
+  
   @Column({ type: 'boolean', default: false })
   is_submitted: boolean;
 

@@ -7,10 +7,14 @@ import { Option } from 'src/question-bank/entities/option.entity';
 import { ApplicantAnswer } from 'src/applicants/entities/applicant-answer.entity';
 import { TestAttempt } from 'src/evaluation/entities/test-attempt.entity';
 import { TestAccessToken } from 'src/evaluation/entities/test-access-token.entity';
+import { EvaluationService } from 'src/evaluation/evaluation.service';
+import { Applicant } from 'src/evaluation/entities/test_attempt.entity';
+import { EvaluationModule } from 'src/evaluation/evaluation.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([ApplicantQuestion, ApplicantAnswer, Option, TestAttempt, TestAccessToken]),
+    TypeOrmModule.forFeature([ApplicantQuestion, ApplicantAnswer, Option, TestAttempt, TestAccessToken, Applicant]),
+    EvaluationModule
   ],
   controllers: [ApplicantQuestionController],
   providers: [ApplicantQuestionService],
